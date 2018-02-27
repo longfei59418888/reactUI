@@ -1,0 +1,23 @@
+@import 'src/style/common';
+//手机验证
+.am-phone-verify{background: #fff;
+  .am-phone-verify-item{@include borderBottom(1,rgba(0,0,0,0.05));display: flex;
+    .code-box{
+      flex: 1;display: flex;
+    }
+    p{height: r(50);
+      &.icon-box{width: r(52);display: flex;align-items: center;justify-content: center;
+        img{width: r(19);height: r(19);}
+      }
+      &.input-box{flex: 1;display: flex;align-items: center;
+        input{border: none;font-size: r(16);width: 100%;height: r(22);display: block;padding-top: r(5);
+          &::-webkit-input-placeholder {color: #666;color: rgba(0,0,0,0.20);}
+        }
+      }
+      &.get-verify-btn{display: flex;font-size: r(16);color: #3B7ED1;align-items: center;justify-content: center;
+        width: r(120); &.action{color: #B2B2B2};@include borderLeft(1,rgba(0,0,0,0.05))
+      }
+    }
+  }
+
+}

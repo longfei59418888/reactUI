@@ -1,0 +1,27 @@
+@import 'src/style/common.scss';
+
+.am-tips{
+    padding-top:r(9);
+    display: flex;
+    align-items: center;
+    font-size: r(11);
+    color: rgba(0,0,0,0.40);
+    letter-spacing: -0.42px;
+    line-height: r(11);
+    &::before{
+        content:'';
+        display: block;
+        margin-right:r(4);
+        background: url('./images/tips.png') no-repeat;
+        width:r(11);
+        height:r(11);
+        background-size: contain;
+    }
+}
+
+.am-table-title {
+    padding:r(13) r(20) r(6) r(20);
+    font-size:r(13);
+    color:rgba(0,0,0,.4);
+    line-height: 1;
+}

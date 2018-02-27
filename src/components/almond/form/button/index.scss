@@ -1,0 +1,21 @@
+@import 'src/style/common';
+
+$am-button-height : r(50);
+
+.am-button{
+  display: block;
+  text-align: center;
+  color:#FFF;
+  background:$primary-color;
+  font-size:r(17);
+  border-radius: r(4);
+  width:100%;
+  height:$am-button-height;
+  line-height: $am-button-height;
+  outline: none;
+  border: 0;
+  &.am-button-default{
+    background: #DEDEDE;
+    border-radius: 4px;
+  }
+}

@@ -1,0 +1,35 @@
+@import 'src/style/common.scss';
+
+.am-panel{
+    &--head{
+  
+      display: flex;
+      padding:0 r(20) ;
+      line-height: 1.6;
+      // background: #F9F9F9;
+      justify-content: space-between;
+      font-family: PingFangSC-Regular;
+      font-size: r(13);
+      color: rgba(0,0,0,0.40);
+      letter-spacing: -0.5px;
+      height:r(40);
+      line-height: r(50);
+      .apply-box{
+        margin-bottom:r(60);
+     
+    }
+    }
+    &--body{
+      background: #FFF;
+      padding:0 0 0 r(19) ;
+    }
+    &--foot{
+        padding:0 r(20);
+        height: r(40);
+      background: #F9F9F9;
+      font-size: r(11);
+      color: rgba(0,0,0,0.40);
+  
+    }
+    
+  }

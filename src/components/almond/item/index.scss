@@ -1,0 +1,14 @@
+@import "src/style/common.scss";
+//贷款中的item
+.an-item-loan-ing{background: #fff;
+  .an-item-loan-box{display: flex;font-size: r(16);letter-spacing: -0.62px;background: #fff;
+    line-height: r(22);@include borderBottom(1,rgba(0,0,0,0.05));margin-left: r(20);
+    .title{wdisplay: flex;padding-top: r(12.5);
+      color: rgba(0,0,0,0.90);padding-left: 0;width: r(90);}
+    .an-item-loan-item{color: rgba(0,0,0,0.60);padding: r(12.5) 0;flex: 1;}
+    .za-cell-arrow{display: flex;align-items: center;justify-content: end;margin: 0;
+      margin-right: r(20)}
+    .an-item-loan-icon{display: flex;margin-right: r(20);align-items: center;}
+  }
+
+}
