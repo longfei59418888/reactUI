@@ -40,6 +40,5 @@ let actions = {
 
 };
 
-actions = Object.assign(actions,personalAction,loanActions,loanApplyAction);
 
 export default actions;
