@@ -1,5 +1,6 @@
 import React from 'react';
 import modal from '../util/modal'
+import Scroller from '../util/iscroll/index.min'
 
 export default class Home extends React.Component {
     toast(){
@@ -23,6 +24,12 @@ class Test extends React.Component{
         this.props.toast()
     }
     render(){
-        return(<div ref='sdf' onClick={()=>{modal.close();this.test()}} style={{fontSize:26,lineHeight:6,textAlign:'center',background:'#ccc',height:'100%'}}>关闭</div>)
+        return(
+            <div ref='sdf' style={{fontSize:26,lineHeight:6,textAlign:'center',background:'#ccc',height:'100%'}}>
+                <Scroller>
+                    <p onClick={()=>{modal.close();this.test()}} >关闭</p>
+                </Scroller>
+                </div>
+        )
     }
 }

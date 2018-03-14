@@ -158,6 +158,13 @@ export function isObject(obj) {
 export function isArray(obj) {
     return _isType(obj) == _ARRAY_NAME
 }
+export function isEmptyObject(obj){  //是否是空对象
+    for(let t in obj){
+        return false;
+    }
+    return true;
+}
+
 
 /*
 * HTML 属性
