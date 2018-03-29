@@ -20,6 +20,8 @@ class Home extends React.Component {
                   render={props => (<LazyRoute {...props} component={import ('./SwitchTabs')}/>)}/>
            <Route exact path='/iscroll'
                   render={props => (<LazyRoute {...props} component={import ('./iscroll')}/>)}/>
+           <Route exact path='/queue'
+                  render={props => (<LazyRoute {...props} component={import ('./queue')}/>)}/>
         </div>
   }
 }

@@ -17,6 +17,7 @@ class Home extends React.Component {
                    <div className='home-item'><a href="/switchtabs">switchtabs,切换显示</a></div>
                    <div className='home-item'><a href="/switchtabs">switchtabs,切换显示</a></div>
                    <div className='home-item'><a href="/iscroll">iscroll</a></div>
+                   <div className='home-item'><a href="/queue">Queue</a></div>
                </div>
             </Scroller>
         </div>
