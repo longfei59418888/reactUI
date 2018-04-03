@@ -3,7 +3,7 @@
 * Number处理
 * */
 
-//金额格式化
+//金额格式化(千分符)
 export function formatMoney(Number,n) {
     let _this = parseFloat(Number)
 
