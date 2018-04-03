@@ -3,11 +3,7 @@
 * Number处理
 * */
 
-/*
-* 金额格式化
-* number    格式的金额
-* n         位数
-* */
+//金额格式化
 export function formatMoney(Number,n) {
     let _this = parseFloat(Number)
 
@@ -136,6 +132,15 @@ export function formatNumberPercent(str) {
 // 名字掩码
 export function formatName(str) {
     return str.substr(0,1)+'*'.repeat(str.length-1)
+}
+//银行卡格式化
+export function formatBankShow(card) {
+    card = card + '';
+    if(card.length<1) return ''
+    if(card.length>0 && card.length<5) return card
+    if(card.length>4){
+        return card.slice(0,4)+' '+formatBankCard(card.slice(4))
+    }
 }
 
 
