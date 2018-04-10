@@ -170,6 +170,53 @@ export function isEmptyObject(obj){  //是否是空对象
     return true;
 }
 
+/*
+* input 输入限制
+* */
+
+//处理金额限制
+export function formatMoneyInput(value,n) {
+    n = n || 2;
+    if(n==0) value = value.replace(/\./g, '')
+    if (value.match(/[^\d\.]/g)) return value.replace(/[^\d\.]/g, '')
+    if (value.match(/^\./)) return '0.';
+    var values = value.split('.')
+    if ((values.length == 2 && values[1].length > 2) || values.length == 3) return values[0] + '.' + values[1].substr(0,2);
+    return value;
+}
+
+// 手机号限制
+export function formatPhoneInput(value) {
+    value = value.replace(/^\d/g, '')
+    // iphone联系人复制出现问题
+    var val = value.split("");
+    value = val.filter(item=>{
+        if(item && item != ''){
+            return item
+        }
+    })
+    return value
+}
+
+//移除表情
+// value.replace(/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g,'');
+
+//银行卡限制
+export function formatBankCardInput(card) {
+    card = card.replace(/[^\d\w]/g,'')
+    card = card + '';
+    if(card.length<1) return ''
+    if(card.length>0 && card.length<5) return card
+    if(card.length>4){
+        return card.slice(0,4)+' '+formatBankCardInput(card.slice(4))
+    }
+}
+
+
+
+
+
+
 
 /*
 * HTML 属性
@@ -187,6 +234,7 @@ export function getVendorPrefix() {
         i++;
     }
 }
+
 //获取 translate 坐标
 export function getTranslateInfo(t) {
     var reg = /translate\((.+)px?,(.+)px?\)/
