@@ -177,6 +177,7 @@ export function isEmptyObject(obj){  //是否是空对象
 //处理金额限制
 export function formatMoneyInput(value,n) {
     n = n || 2;
+    if(value.match(/^0\d/))  value = value.slice(1)
     if(n==0) value = value.replace(/\./g, '')
     if (value.match(/[^\d\.]/g)) return value.replace(/[^\d\.]/g, '')
     if (value.match(/^\./)) return '0.';
