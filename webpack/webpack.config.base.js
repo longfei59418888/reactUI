@@ -23,6 +23,10 @@ module.exports = {
     resolve: {
         extensions: [
             '.js', '.jsx', '.scss'
+        ],
+        modules:[
+            path.resolve(''), // 模块默认位置
+            'node_modules'
         ]
     },
     module: {
