@@ -465,4 +465,3 @@ function _rotateImg(img, direction,canvas) {
 
 
 
-
