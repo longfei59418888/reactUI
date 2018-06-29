@@ -7,24 +7,12 @@ import classnames from 'classnames'
 import actions from 'src/actions/userInfo'
 import { defaultProps , loading, login, connect, setTitle, autobind} from 'src/decorators'
 
+console.log('d')
 
-
-<<<<<<< HEAD
-// @iscroll()
-// @transition()
-@defaultProps({select:'dsf'})
-@connect(state=>{
-    let { userInfo } = state
-    return { userInfo }
-},dispatch=>{
-    return bindActionCreators(actions,dispatch)
-})
-=======
-console.log(store)
 @setTitle('test')
 @defaultProps({select:false})
 @connect(['userInfo'],actions)
->>>>>>> 664ac910d4977a9b5538413da1f8bb84d2b9e5e6
+
 @loading(async (props,state)=>{
     let userinfo = props.getUserInfo()
     await Promise.all([userinfo]);
