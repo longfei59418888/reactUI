@@ -54,6 +54,8 @@ const login = function () {
     }
 }
 
+// @iscroll()
+// @transition()
 @defaultProps({select:'dsf'})
 @connect(state=>{
     let { userInfo } = state
