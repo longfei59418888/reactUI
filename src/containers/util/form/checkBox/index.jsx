@@ -7,7 +7,6 @@ import classnames from 'classnames'
 import actions from 'src/actions/userInfo'
 import { defaultProps , loading, login, connect, setTitle, autobind} from 'src/decorators'
 
-console.log('d')
 
 @setTitle('test')
 @defaultProps({select:false})

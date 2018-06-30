@@ -1,4 +1,4 @@
-import { connect as connects} from "react-redux";
+import {connect as connects} from "react-redux";
 import actions from "../actions/userInfo";
 import {bindActionCreators} from "redux";
 
@@ -11,28 +11,34 @@ export function defaultProps(defaultProps) {
         target.defaultProps = defaultProps
     }
 }
+
 /*
 * 组件的延时加载
 * promise   Promise Promise对象
+* Loading   Component 加载组件
 * 传入promise对象，当promise中执行resole时候组件加载完成
+* 也可以异步的加载组件或者模块
 * */
-export function loading(promise) {
+export function loading(promise, Loading = "") {
     return function (target) {
         let render = target.prototype.render;
         let componentWillMount = target.prototype.componentWillMount;
         target.prototype.componentWillMount = function () {
             this.setState({
-                loading:true
+                loading: true
             })
-            if(promise) promise(this.props,this.state).then(()=>{
+            if (promise) promise(this.props, this.state).then(() => {
+                console.log(arguments)
                 this.setState({
-                    loading:false
+                    loading: false
                 })
             })
-            if(componentWillMount) componentWillMount.apply(this)
+            if (componentWillMount) componentWillMount.apply(this)
         }
         target.prototype.render = function () {
-            if(this.state.loading) return(<div>loading</div>)
+            if (this.state.loading) {
+                return !Loading ? '' : <Loading/>
+            }
             return render.apply(this)
         }
         return target
@@ -48,14 +54,14 @@ export function login() {
     return function (target) {
         let render = target.prototype.render;
         target.prototype.render = function () {
-            if(!this.props.userInfo || !this.props.userInfo.isLogin){
+            if (!this.props.userInfo || !this.props.userInfo.isLogin) {
                 return (<div>no login</div>)
             }
             return render.apply(this)
         }
         let componentWillMount = target.prototype.componentWillMount;
         target.prototype.componentWillMount = function () {
-            if(componentWillMount) componentWillMount.apply(this)
+            if (componentWillMount) componentWillMount.apply(this)
         }
     }
 }
@@ -65,18 +71,18 @@ export function login() {
 * reduces   Array   state对象上的属性名称数组，用于绑定state数据到组件上
 * actions   Object  redux的actions
 * */
-export function connect(reduces,actions) {
+export function connect(reduces, actions) {
     return function (target) {
-        return connects(state=>{
+        return connects(state => {
             let stateProps;
-            reduces.forEach((item)=>{
-                stateProps={
-                    [item]:state[item]
+            reduces.forEach((item) => {
+                stateProps = {
+                    [item]: state[item]
                 }
             })
             return stateProps
-        },dispatch=>{
-            return bindActionCreators(actions,dispatch)
+        }, dispatch => {
+            return bindActionCreators(actions, dispatch)
         })(target)
     }
 }
@@ -84,10 +90,11 @@ export function connect(reduces,actions) {
 /*
 * 将class上面的方法thie指向对象本身
 * */
-export function autobind(targer,name,descriptor) {
+export function autobind(targer, name, descriptor) {
+
     let oldValue = descriptor.value;
     descriptor.value = function () {
-        return oldValue.apply(this, arguments);
+        return oldValue.apply(targer.constructor, arguments);
     }
     return descriptor
 }
@@ -98,14 +105,15 @@ export function autobind(targer,name,descriptor) {
 * title String  标题名称
 * */
 export function setTitle(title) {
-    return target=>{
+    return target => {
         let componentWillMount = target.prototype.componentWillMount;
         target.prototype.componentWillMount = function () {
             _setTitle(title)
-            if(componentWillMount) componentWillMount.apply(this)
+            if (componentWillMount) componentWillMount.apply(this)
         }
     }
 }
+
 // 设置文档的标题 html标题
 function _setTitle(title) {
     document.title = title;
@@ -113,13 +121,15 @@ function _setTitle(title) {
     iframe.src = '../favicon.ico';
     iframe.style.display = 'none';
     // 重新加载一个iframe就会重新刷新 document.title
-    iframe.onload = function() {
-        setTimeout(function(){
+    iframe.onload = function () {
+        setTimeout(function () {
             iframe.remove();
         }, 0)
     }
     document.body.appendChild(iframe);
 }
+
+
 
 
 
