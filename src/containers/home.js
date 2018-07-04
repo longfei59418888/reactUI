@@ -20,6 +20,8 @@ class Home extends React.Component {
                    <div className='home-item'><a href="/queue">Queue</a></div>
                    <div className='home-item'><a href="/form">form</a></div>
                    <div className='home-item'><a href="/decorator">decorator</a></div>
+                   <div className='home-item'><a href="/charts">charts</a></div>
+                   <div className='home-item'><a href="/test">test</a></div>
                </div>
             </Scroller>
         </div>

@@ -12,9 +12,9 @@ const renderApp = App => {
 	render(
 		<AppContainer>
 			<Router>
-                <Provider store={store}>
+                {/*<Provider store={store}>*/}
                   <App/>
-                </Provider>
+                {/*</Provider>*/}
 			</Router>
 		</AppContainer>,
 		document.getElementById("app")

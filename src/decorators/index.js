@@ -131,7 +131,16 @@ function _setTitle(title) {
 
 
 
+/*
+* 绑定方法/属性到原型上面
+* objects Object 合并到prototype的对象
+* */
 
+export function mixin(objects) {
+    return target =>  {
+        Object.assign(target.prototype, objects);
+    }
+}
 
 
 
