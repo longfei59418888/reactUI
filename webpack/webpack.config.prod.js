@@ -43,7 +43,7 @@ var prodConfig = {
                     ]
                 })
             }, {
-                test: /\.scss$/,
+                test: /^.((?!module).)*\.scss$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: [
@@ -69,7 +69,7 @@ var prodConfig = {
                     ]
                 })
             }, {
-                test: /\.module.scss$/,
+                test: /\.module\.scss$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: [

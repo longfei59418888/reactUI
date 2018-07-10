@@ -21,7 +21,7 @@ var devConfig = {
                     }
                 ]
             }, {
-                test: /\.scss$/,
+                test: /^.((?!module).)*\.scss$/,
                 use: [
                     {
                         loader: 'style-loader',
@@ -39,7 +39,7 @@ var devConfig = {
                     }
                 ]
             }, {
-                test: /\.module.scss$/,
+                test: /\.module\.scss$/,
                 use: [
                     {
                         loader: 'style-loader',
