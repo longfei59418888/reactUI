@@ -1,7 +1,10 @@
 import {observable, action, computed, autorun, transaction} from 'mobx'
 import {observer} from "mobx-react/index";
 
+
+
 class Teat {
+
     @observable number = 0;
 
     /*
@@ -44,6 +47,11 @@ const Modal = new Teat()
 autorun(() => {
     console.log('autorun:' + Modal.number)
 })
+
+// console.log(Modal)
+// Modal.number = 1
+
+
 /*
 * autorun(fn,option)
 * 函数内部的 observable 对象改变的时候，执行函数
@@ -66,8 +74,8 @@ autorun(() => {
 * 将 回调函数中 所有当 action或者state操作合并一个一起执行
 * */
 
-
-
+//
+//
 function Observable(observers) {
     Object.defineProperty(observers,'number',{
         set(value){
@@ -85,16 +93,13 @@ let observers = {
 }
 
 let ObservableValue = new Observable(observers)
-console.log(ObservableValue)
 ObservableValue.number =  2
 ObservableValue.number =  3
 
 
-// console.log(Modal)
-// Modal.number = 1
+
+
 export default Modal
-
-
 
 
 

@@ -94,7 +94,7 @@ export function autobind(targer, name, descriptor) {
 
     let oldValue = descriptor.value;
     descriptor.value = function () {
-        return oldValue.apply(targer.constructor, arguments);
+        return oldValue.apply(this, arguments);
     }
     return descriptor
 }
