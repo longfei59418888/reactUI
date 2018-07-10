@@ -16,6 +16,7 @@ var devConfig = {
                     }, {
                         loader: 'css-loader',
                         options: {
+                            modules: true,
                             importLoaders: 1
                         }
                     }
@@ -31,6 +32,7 @@ var devConfig = {
                     }, {
                         loader: 'css-loader',
                         options: {
+                            modules: true,
                             importLoaders: 1
                         }
                     }, {
