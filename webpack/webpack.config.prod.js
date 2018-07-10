@@ -29,7 +29,6 @@ var prodConfig = {
                         {
                             loader: 'css-loader',
                             options: {
-                                modules: true,
                                 importLoaders: 1
                             }
                         }, {
@@ -51,8 +50,35 @@ var prodConfig = {
                         {
                             loader: 'css-loader',
                             options: {
-                                modules: true,
                                 importLoaders: 1
+                            }
+                        }, {
+                            loader: 'postcss-loader',
+                            options: {
+                                sourceMap: true,
+                                plugins: (loader) => [require('autoprefixer')({
+                                    browsers: ['last 2 versions', '> 4%', 'iOS 7']
+                                })]
+                            }
+                        }, {
+                            loader: "sass-loader"
+                        },
+                        {
+                            loader: path.resolve('webpack/testLoader.js')
+                        }
+                    ]
+                })
+            }, {
+                test: /\.module.scss$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true,
+                                importLoaders: 1,
+                                localIdentName: '[name]-[local]-[hash:base64:5]'
                             }
                         }, {
                             loader: 'postcss-loader',

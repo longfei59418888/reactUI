@@ -16,7 +16,6 @@ var devConfig = {
                     }, {
                         loader: 'css-loader',
                         options: {
-                            modules: true,
                             importLoaders: 1
                         }
                     }
@@ -28,6 +27,26 @@ var devConfig = {
                         loader: 'style-loader',
                         options: {
                             importLoaders: 1
+                        }
+                    }, {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            importLoaders: 1
+                        }
+                    }, {
+                        loader: "sass-loader"
+                    }
+                ]
+            }, {
+                test: /\.module.scss$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                        options: {
+                            modules: true,
+                            importLoaders: 1,
+                            localIdentName: '[name]-[local]-[hash:base64:5]'
                         }
                     }, {
                         loader: 'css-loader',
