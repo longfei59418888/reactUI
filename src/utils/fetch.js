@@ -39,7 +39,7 @@ export const uplaod = async (url, body) => {
         return rst.json()
 
     }).then(resData => {
-        return dealRst(resData, opts)
+        return dealRst(resData, {})
     }).catch(function (err) {
         console.log('catch fetch:' + err)
     })
