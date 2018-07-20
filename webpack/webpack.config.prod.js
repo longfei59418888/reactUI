@@ -17,7 +17,7 @@ var prodConfig = {
         publicPath: '/almond/static/',
         filename: 'js/[name][chunkhash:8].js',
         chunkFilename: 'js/[name][chunkhash:8].js',
-        path: path.resolve(__dirname, "dist")
+        path: path.resolve(__dirname, "../dist")
     },
     module: {
         rules: [
