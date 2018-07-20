@@ -1,7 +1,4 @@
-/**
- *  自助卡配置后台首页
- * @author Focus Wong
- */
+
 
 import React from 'react';
 import {Route, Link, withRouter} from "react-router-dom";

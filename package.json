@@ -7,7 +7,7 @@
     "dev": "webpack-dev-server --config ./webpack/webpack.config.dev.js",
     "build": "webpack --config ./webpack/webpack.config.prod.js"
   },
-  "author": "Focus Wong",
+  "author": "xiaolong",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^7.2.3",
@@ -50,7 +50,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
-    "webpack": "^3.10.0",
+    "webpack": "3.10.0",
     "webpack-dev-server": "^2.9.7",
     "webpack-merge": "^4.1.1"
   },
