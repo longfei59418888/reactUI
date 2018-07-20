@@ -62,9 +62,6 @@ var prodConfig = {
                             }
                         }, {
                             loader: "sass-loader"
-                        },
-                        {
-                            loader: path.resolve('webpack/testLoader.js')
                         }
                     ]
                 })
@@ -90,9 +87,6 @@ var prodConfig = {
                             }
                         }, {
                             loader: "sass-loader"
-                        },
-                        {
-                            loader: path.resolve('webpack/testLoader.js')
                         }
                     ]
                 })
