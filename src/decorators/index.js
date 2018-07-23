@@ -1,5 +1,8 @@
 import {connect as connects} from "react-redux";
-import actions from "../actions/userInfo";
+import React from 'react';
+import { Redirect } from 'react-router'
+import USER from 'src/models/userinfo'
+import {getCookie} from 'src/utils/cookie'
 import {bindActionCreators} from "redux";
 
 /*
@@ -20,28 +23,40 @@ export function defaultProps(defaultProps) {
 * 也可以异步的加载组件或者模块
 * */
 export function loading(promise, Loading = "") {
-    return function (target) {
-        let render = target.prototype.render;
-        let componentWillMount = target.prototype.componentWillMount;
-        target.prototype.componentWillMount = function () {
-            this.setState({
-                loading: true
-            })
-            if (promise) promise(this.props, this.state).then(() => {
-                console.log(arguments)
-                this.setState({
-                    loading: false
-                })
-            })
-            if (componentWillMount) componentWillMount.apply(this)
-        }
-        target.prototype.render = function () {
-            if (this.state.loading) {
-                return !Loading ? '' : <Loading/>
+    return function (Target) {
+        return class Com extends React.Component {
+            constructor(props){
+                super()
             }
-            return render.apply(this)
+            state={
+                loading:false,
+                load:[]
+            }
+            componentWillMount(){
+                this.setState({
+                    loading: true
+                })
+                if (promise) promise(this.props, this.state).then((modules) => {
+                    let asyncComponent = []
+                    if(modules){
+                        modules.forEach(item=>{
+                            asyncComponent.push(item.default)
+                        })
+                    }
+                    this.setState({
+                        loading: false,
+                        load:asyncComponent
+                    })
+                })
+            }
+            render(){
+                if (this.state.loading) {
+                    return !Loading ? '' : <Loading/>
+                }
+                return <Target {...this.props} load = {this.state.load}/>
+            }
+
         }
-        return target
     }
 }
 
@@ -54,14 +69,11 @@ export function login() {
     return function (target) {
         let render = target.prototype.render;
         target.prototype.render = function () {
-            if (!this.props.userInfo || !this.props.userInfo.isLogin) {
-                return (<div>no login</div>)
+            let token = getCookie('token')
+            if (!token) {
+                return (<Redirect to='/login'/>)
             }
             return render.apply(this)
-        }
-        let componentWillMount = target.prototype.componentWillMount;
-        target.prototype.componentWillMount = function () {
-            if (componentWillMount) componentWillMount.apply(this)
         }
     }
 }
@@ -88,7 +100,7 @@ export function connect(reduces, actions) {
 }
 
 /*
-* 将class上面的方法thie指向对象本身
+* 将class上面的方法this指向对象本身
 * */
 export function autobind(targer, name, descriptor) {
 
