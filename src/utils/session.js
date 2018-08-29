@@ -1,4 +1,4 @@
-const prefixName = 'xxr_store_'
+const prefixName = 'name_store_'
 let sessionList = get('sessionList')?get('sessionList'):[]
 
 
@@ -20,7 +20,7 @@ export function get(attr){
 
 
 export const clear = (attr)=>{
-    sessionStorage.clear(`${prefixName}_${attr}`)
+    sessionStorage.removeItem(`${prefixName}_${attr}`)
 }
 
 
