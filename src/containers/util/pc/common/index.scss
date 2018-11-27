@@ -1,4 +1,4 @@
-@import '../reset';
+@import 'src/style/reset';
 
 .xl-common_container_box {
   width: 100vw;
@@ -9,6 +9,7 @@
   z-index: 9999;
   display: block;
   text-align: center;
+  font-size: 16px;
   &:before{
     content: "";
     display: inline-block;

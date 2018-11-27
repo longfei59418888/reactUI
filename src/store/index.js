@@ -3,33 +3,38 @@ import { createLogger } from 'redux-logger';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 
+
+// redux-saga 例子
+import createSagaMiddleware from 'redux-saga'
+import mySaga from 'src/reducers/actions/saga'
+
 import reducers from '../reducers';
 
 const  ENV = process.env.NODE_ENV;
 
-const configureStore = (initialState={}) => {
-  
-  const logger = createLogger();
-  let enhancer;
-  if (ENV =="production") {
-    
+const logger = createLogger();
+let enhancer;
+if (ENV =="production") {
+
     enhancer = compose(applyMiddleware(thunk, promise)
-  );
-  } 
-  else {
+    );
+}
+else {
     enhancer = compose(applyMiddleware(thunk, promise, logger));
-  }
+}
 
-  const store = createStore(reducers, initialState, enhancer);
-  
-  if (ENV !="production" && module.hot.active) {
+const sagaMiddleware = createSagaMiddleware()
+enhancer = applyMiddleware(sagaMiddleware)
+
+const store = createStore(reducers, {}, enhancer);
+
+if (ENV !="production" && module.hot.active) {
     module.hot.accept('../reducers', () => {
-      const nextReducers = require('../reducers');
-      console.log("nextReducers",nextReducers)
-      store.replaceReducer(nextReducers);
+        const nextReducers = require('../reducers');
+        console.log("nextReducers",nextReducers)
+        store.replaceReducer(nextReducers);
     });
-  }
-  return store;
-};
+}
+sagaMiddleware.run(mySaga)
 
-export default configureStore;
+export default store;

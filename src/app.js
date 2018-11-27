@@ -2,19 +2,19 @@ import React from 'react';
 import {render} from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom";
 import {Provider} from "react-redux";
-import configureStore from "./store";
+import store from "./store";
 import {AppContainer} from 'react-hot-loader'
 import App from './containers/index';
 
-let store = configureStore();
 
+console.log(store)
 const renderApp = App => {
 	render(
 		<AppContainer>
 			<Router>
-                {/*<Provider store={store}>*/}
+                <Provider store={store}>
                   <App/>
-                {/*</Provider>*/}
+                </Provider>
 			</Router>
 		</AppContainer>,
 		document.getElementById("app")

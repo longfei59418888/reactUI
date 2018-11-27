@@ -1,7 +1,7 @@
 import {connect as connects} from "react-redux";
 import React from 'react';
 import { Redirect } from 'react-router'
-import USER from 'src/models/userinfo'
+// import USER from 'src/models/userinfo'
 import {getCookie} from 'src/utils/cookie'
 import {bindActionCreators} from "redux";
 

@@ -58,6 +58,11 @@
     "core-decorators": "^0.20.0",
     "mobx": "^5.0.3",
     "mobx-react": "^5.2.3",
-    "react-transition-group": "1.2.1"
+    "react-transition-group": "1.2.1",
+    "redux-saga": "^0.16.0",
+    "xl_alioss_react": "^1.0.5",
+    "xl_cookie": "^1.0.7",
+    "xl_session": "^1.0.3",
+    "xl_storage": "^1.0.4"
   }
 }

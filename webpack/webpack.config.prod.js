@@ -6,17 +6,32 @@ var port = config.PROD_PORT,
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     webpack = require("webpack"),
     path = require('path');
-var TestpLU
 
 var prodConfig = {
     entry: {
-        app: './src/app.js'
+        app: './src/app.js',
+        vendors: [
+          'react',
+          'react-router',
+          'react-redux',
+          'react-router-dom',
+          'react-dom',
+          'lazy-route',
+          'redux-logger',
+          'redux-promise',
+          'redux-thunk',
+          'redux',
+          'classnames',
+          'es6-promise',
+          'isomorphic-fetch',
+          'react-transition-group',
+        ],
 
     },
     output: {
         publicPath: '/almond/static/',
-        filename: 'js/[name][chunkhash:8].js',
-        chunkFilename: 'js/[name][chunkhash:8].js',
+        filename: 'js/[name].[chunkhash:8].js',
+        chunkFilename: 'js/[name].[chunkhash:8].js',
         path: path.resolve(__dirname, "../dist")
     },
     module: {
@@ -103,6 +118,7 @@ var prodConfig = {
             'process.env.NODE_ENV': JSON.stringify('production'),
             IS_DEVELOPMETN: false
         }),
+
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'src/index.html'
@@ -110,7 +126,11 @@ var prodConfig = {
         // 提取css 根据入口文件，提取重复引用的公共代码类库，打包到单独文件中 new webpack   .optimize
         new webpack
             .optimize
-            .CommonsChunkPlugin({async: true, minChunks: 3})
+            .CommonsChunkPlugin({async: true, minChunks: 3}),
+        new webpack.optimize.CommonsChunkPlugin({
+          names:['vendors'],
+          filename:`js/vendors.${config.version}.js`
+        }),
     ]
 };
 

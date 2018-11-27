@@ -1,0 +1,36 @@
+body, html {
+  margin: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-size: .16rem; }
+
+.home {
+  padding: .2rem; }
+  .home .home-item {
+    font-size: .3rem;
+    height: .8rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-bottom: 1px solid #eee; }
+    .home .home-item a {
+      text-decoration: none;
+      display: block;
+      width: 100%; }
+
+.show-info {
+  padding: .2rem;
+  font-size: .3rem; }
+  .show-info img {
+    height: 4.45rem;
+    width: auto; }
+  .show-info p span {
+    color: red; }
+  .show-info + ul li {
+    line-height: .8rem; }
