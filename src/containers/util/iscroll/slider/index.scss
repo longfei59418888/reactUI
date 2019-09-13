@@ -1,0 +1,15 @@
+.xl_common_slider_box{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  bottom:0;
+  .xl_common_slider_action_box{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    transform: translate(0,-60px);
+    overflow-y: scroll;
+    bottom: -60px;
+  }
+}

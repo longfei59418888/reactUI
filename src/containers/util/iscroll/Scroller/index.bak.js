@@ -251,16 +251,17 @@ class AppComponent extends React.Component {
     const {
       container, boxScroll, refresh, loadMore,
     } = this.style;
-    const { children } = this.props;
+    const { children,refreshText } = this.props;
     const { refreshCom, loadMoreCom } = this.state;
     return (
       <div style={container}>
         <div ref={(r) => { this.boxScroll = r; }} style={boxScroll}>
           <div ref={(r) => { this.box = r; }}>
-            <div ref={(r) => { this.refresh = r; }} style={refresh}>{refreshCom}</div>
+            <div ref={(r) => { this.refreshRef = r; }} style={refresh}>{refreshCom}</div>
             {children}
             <div ref={(r) => { this.loadMore = r; }} style={loadMore}>{loadMoreCom}</div>
           </div>
+          <div style={{height:0,overflow:'hidden'}}>{refreshText}</div>
         </div>
       </div>
     );

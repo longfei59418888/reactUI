@@ -6,7 +6,7 @@ import LazyRoute from "lazy-route";
 import style from './index.scss'
 class Home extends React.Component {
   render() {
-       return <div style={{position:'absolute',width:'100%',height:'100%'}}>
+       return <div style={{position:'absolute',width:'100%',height:'100%',overflowY:'scroll'}}>
            <Route exact path='/home'
                   render={props => (<LazyRoute {...props} component={import ('./home')}/>)}/>
           <Route exact path='/phoneverify'

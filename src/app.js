@@ -1,29 +1,50 @@
 import React from 'react';
 import {render} from 'react-dom';
-import { BrowserRouter as Router } from "react-router-dom";
+// import { BrowserRouter as Router } from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "./store";
 import {AppContainer} from 'react-hot-loader'
 import App from './containers/index';
+import Router, {Route,Text} from './containers/test/router'
+import Slider from './containers/util/iscroll/slider/slider'
 
-
-console.log(store)
+// <Router>
+// <div>1</div>
+// <Text>
+//     <div>3</div>
+//     <Route path='/test2'>7</Route>
+// </Text>
+// <Route path='/test'>4</Route>
+// <Route extra path='/switch'>
+//     <div>2</div>
+//     <Route path='/switch/one'>5</Route>
+//     <Route path='/switch/two'>
+//         <div>6</div>
+//     </Route>
+// </Route>
+// </Router>
+const test = [1,2,3,4,5,5,6,6,7,3,2,3,3,3,3,3,3,3,3,3,3,3,8,8,9,9,9,2,3,4,5,5,6,6,7,3,2,3,3,3,3,3,3,3,3,3,3,3,8,8,9,9,9,2,3,4,5,5,6,6,7,3,2,3,3,3,3,3,3,3,3,3,3,3,8,8,9,9,9]
 const renderApp = App => {
-	render(
-		<AppContainer>
-			<Router>
-                <Provider store={store}>
-                  <App/>
-                </Provider>
-			</Router>
-		</AppContainer>,
-		document.getElementById("app")
-	);
+    render(
+        <AppContainer>
+            <Slider>
+                {test.map((item)=>{
+                    return <p>aa</p>
+                })}
+            </Slider>
+            {/*<Router>*/}
+            {/*<Provider store={store}>*/}
+            {/*<App/>*/}
+            {/*</Provider>*/}
+            {/*</Router>*/}
+        </AppContainer>,
+        document.getElementById("app")
+    );
 };
 
 renderApp(App);
 
 if (module.hot) {
-		// debugger;
-      module.hot.accept(() => renderApp(App));
+    // debugger;
+    module.hot.accept(() => renderApp(App));
 }
