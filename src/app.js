@@ -5,7 +5,7 @@ import {Provider} from "react-redux";
 import store from "./store";
 import {AppContainer} from 'react-hot-loader'
 import App from './containers/index';
-import Router, {Route,Text} from './containers/test/router'
+import Router, {Route, Text} from './containers/test/router'
 import Slider from './containers/util/iscroll/slider/slider'
 
 // <Router>
@@ -23,14 +23,19 @@ import Slider from './containers/util/iscroll/slider/slider'
 //     </Route>
 // </Route>
 // </Router>
-const test = [1,2,3,4,5,5,6,6,7,3,2,3,3,3,3,3,3,3,3,3,3,3,8,8,9,9,9,2,3,4,5,5,6,6,7,3,2,3,3,3,3,3,3,3,3,3,3,3,8,8,9,9,9,2,3,4,5,5,6,6,7,3,2,3,3,3,3,3,3,3,3,3,3,3,8,8,9,9,9]
+const test = [1, 2, 3, 4, 5, 5, 6, 6, 7, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 8, 8, 9, 9, 9, 2, 3, 4, 5, 5, 6, 6, 7, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 8, 8, 9, 9, 9, 2, 3, 4, 5, 5, 6, 6, 7, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 8, 8, 9, 9, 9]
 const renderApp = App => {
     render(
         <AppContainer>
-            <Slider>
-                {test.map((item)=>{
-                    return <p>aa</p>
+            <Slider refresh={(end) => {
+                setTimeout(() => {
+                    end()
+                }, 2000)
+            }}>
+                {test.map((item, key) => {
+                    return <p key={key}>aa</p>
                 })}
+
             </Slider>
             {/*<Router>*/}
             {/*<Provider store={store}>*/}

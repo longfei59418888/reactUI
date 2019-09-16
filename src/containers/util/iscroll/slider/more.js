@@ -9,10 +9,9 @@ class AppComponent extends React.Component {
     constructor(props, context) {
         super(props, context);
     }
-
     componentDidMount() {
         const boxScroll = this.boxScroll
-        const {refresh, loadMore} = this.props
+        const {refresh} = this.props
         boxScroll.style[`${Prefix}Transform`] = `translate(0px,-60px)`
         let moveIng = false
         boxScroll.addEventListener('touchstart', (se) => {
@@ -53,27 +52,12 @@ class AppComponent extends React.Component {
             boxScroll.addEventListener('touchmove', move, true)
             boxScroll.addEventListener('touchend', end)
         })
-        if (loadMore) {
-            boxScroll.addEventListener('scroll', (e) => {
-                const clientRect = this.more.getBoundingClientRect()
-                const {x, y} = clientRect
-                if (y - 300 < document.body.offsetHeight) {
-                    loadMore((end) => {
-
-                    })
-                }
-
-            })
-        }
-
     }
-
     refreshEnd = () => {
         const boxScroll = this.boxScroll
         boxScroll.style[`${Prefix}Transform`] = `translate(0px,-60px)`
         this.refreshIng = false
     }
-
     render() {
         return (
             <div className={'xl_common_slider_box'}>
@@ -83,9 +67,7 @@ class AppComponent extends React.Component {
                     <div style={{height: 60}}></div>
                     <div className={'xl_common_slider_container'}>
                         {this.props.children}
-
                     </div>
-                    <div ref={(ref) => this.more = ref}>more</div>
                 </div>
             </div>
         )
