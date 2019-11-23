@@ -27,6 +27,8 @@ class Home extends React.Component {
                   {/*render={props => (<LazyRoute {...props} component={import ('./charts')}/>)}/>*/}
            <Route exact path='/test'
                   render={props => (<LazyRoute {...props} component={import ('./test/test')}/>)}/>
+           <Route exact path='/swpier'
+                  render={props => (<LazyRoute {...props} component={import ('./test/swiper')}/>)}/>
         </div>
   }
 }

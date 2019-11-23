@@ -1,0 +1,15 @@
+.test-test {
+  .top {
+    height: 250px;
+    background: black;
+  }
+
+  .top-bottom {
+    height: 50px;
+    background: #00bc70;
+  }
+
+  .box {
+    height: calc(100vh - 50px);
+  }
+}

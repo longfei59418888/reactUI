@@ -13,3 +13,16 @@
     bottom: -60px;
   }
 }
+.xl_common_slider_box2{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  bottom:0;
+  .xl_common_slider_action_box{
+    width: 100%;
+    transform: translate(0,0);
+    overflow: hidden;
+  }
+}
+

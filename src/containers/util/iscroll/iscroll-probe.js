@@ -58,7 +58,7 @@
       const speed = Math.abs(distance) / time;
       let destination;
       let duration;
-
+      console.log(speed)
       deceleration = deceleration === undefined ? 0.0006 : deceleration;
 
       destination = current + (speed * speed) / (2 * deceleration) * (distance < 0 ? -1 : 1);
@@ -111,9 +111,9 @@
         const safariVersion = appVersion.match(/Safari\/(\d+.\d)/);
         if (safariVersion && typeof safariVersion === 'object' && safariVersion.length >= 2) {
           return parseFloat(safariVersion[1]) < 535.19;
-        } 
+        }
         return true;
-      } 
+      }
       return false;
     }());
 
@@ -223,7 +223,7 @@
             return 7.5625 * (k -= (1.5 / 2.75)) * k + 0.75;
           } if (k < (2.5 / 2.75)) {
             return 7.5625 * (k -= (2.25 / 2.75)) * k + 0.9375;
-          } 
+          }
           return 7.5625 * (k -= (2.625 / 2.75)) * k + 0.984375;
         },
       },
@@ -338,7 +338,7 @@
     this.options.invertWheelDirection = this.options.invertWheelDirection ? -1 : 1;
 
     if (this.options.probeType == 3) {
-      this.options.useTransition = false;	
+      this.options.useTransition = false;
     }
 
     // INSERT POINT: NORMALIZATION
@@ -477,7 +477,7 @@
       let deltaY		= point.pageY - this.pointY;
       const timestamp	= utils.getTime();
       let newX; let newY;
-      let absDistX; let 
+      let absDistX; let
         absDistY;
 
       this.pointX		= point.pageX;
@@ -619,7 +619,9 @@
       // start momentum animation if needed
       if (this.options.momentum && duration < 300) {
         momentumX = this.hasHorizontalScroll ? utils.momentum(this.x, this.startX, duration, this.maxScrollX, this.options.bounce ? this.wrapperWidth : 0, this.options.deceleration) : { destination: newX, duration: 0 };
-        momentumY = this.hasVerticalScroll ? utils.momentum(this.y, this.startY, duration, this.maxScrollY, this.options.bounce ? this.wrapperHeight : 0, this.options.deceleration) : { destination: newY, duration: 0 };
+        momentumY = this.hasVerticalScroll ? utils.momentum(
+            this.y, this.startY, duration, this.maxScrollY,
+            this.options.bounce ? this.wrapperHeight : 0, this.options.deceleration) : { destination: newY, duration: 0 };
         newX = momentumX.destination;
         newY = momentumY.destination;
         time = Math.max(momentumX.duration, momentumY.duration);
@@ -950,7 +952,7 @@
 
     getComputedPosition() {
       let matrix = window.getComputedStyle(this.scroller, null);
-      let x; let 
+      let x; let
         y;
 
       if (this.options.useTransform) {
@@ -1297,7 +1299,7 @@
     _nearestSnap(x, y) {
       if (!this.pages.length) {
         return {
-          x: 0, y: 0, pageX: 0, pageY: 0, 
+          x: 0, y: 0, pageX: 0, pageY: 0,
         };
       }
 
@@ -1865,6 +1867,7 @@
     },
 
     _end(e) {
+      console.log(1)
       if (!this.initiated) {
         return;
       }
